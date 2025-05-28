@@ -14,11 +14,14 @@ int main()
 	swap(head);
 	ft_printf("SWAP_A\n");
 	print_list(head);
-	append(head, 2);
-	ft_printf("APPEND\n");
+	append_last(&head, 2);
+	ft_printf("APPEND LAST\n");
 	print_list(head);
 	ft_printf("DELETE\n");
-	delete_node(head, 2);
+	delete_node(&head, 0);
+	print_list(head);
+	ft_printf("APPEND BEGG\n");
+	append_begg(&head, 5);
 	print_list(head);
 	return 0;
 }

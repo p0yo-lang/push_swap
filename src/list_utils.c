@@ -83,12 +83,12 @@ void	swap(node_t *head)
 	head->val = head->next->val;
 	head->next->val = temp;
 }
-node_t	*append(node_t *head, int value)
+node_t	*append_last(node_t **head, int value)
 {
 	node_t	*last;
 	node_t	*new_node;
 
-	last = head;
+	last = *head;
 	while (last->next)
 		last = last->next;
 	new_node = malloc(sizeof(node_t));
@@ -96,37 +96,54 @@ node_t	*append(node_t *head, int value)
 	new_node->val = value;
 	return (new_node);
 }
+node_t	*append_begg(node_t **head, int value)
+{
+	node_t	*new_node;
 
-node_t	*delete_node(node_t *head, int idx)
+	new_node = malloc(sizeof(node_t));
+	new_node->val = value;
+	new_node->empty = 1;
+	new_node->next = *head;
+	*head = new_node;
+	return (*head);
+}
+
+node_t	*delete_node(node_t **head, int idx)
 {
 	node_t	*temp;
 	node_t	*prev;
 	int		i;
 
 	i = 0;
-	temp = head;
-	if (!temp)
-		return (head);
-	if (idx == 1)
+	temp = *head;
+	if (idx == 0)
 	{
-		head = temp->next;
+		*head = temp->next;
 		free(temp);
-		return (head); 
+		return (*head); 
 	}
 	while (i < idx)
 	{
 		prev = temp;
 		temp = temp->next;
+		i++;
 	}
 	if (temp)
 	{
 		prev->next = temp->next;
 		free(temp);
 	}
-	return (head);
+	return (*head);
 }
 
-/*void	push(node_t *from, node_t *to)
+node_t	*push(node_t *from, node_t *to)
 {
+	node_t	*head;
 
-}*/
+	if (from->empty == 0)
+		return (from);
+	head = to;
+	append_begg(&to, from->val);
+	delete_node(&from, 0);
+	return (from);
+}
