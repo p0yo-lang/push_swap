@@ -136,14 +136,14 @@ node_t	*delete_node(node_t **head, int idx)
 	return (*head);
 }
 
-node_t	*push(node_t *from, node_t *to)
+node_t	*push(node_t **from, node_t **to)
 {
 	node_t	*head;
 
-	if (from->empty == 0)
-		return (from);
-	head = to;
-	append_begg(&to, from->val);
-	delete_node(&from, 0);
-	return (from);
+	if ((*from)->empty == 0)
+		return (*from);
+	head = *to;
+	append_begg(to, (*from)->val);
+	delete_node(from, 0);
+	return (*from);
 }
