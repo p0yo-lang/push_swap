@@ -3,7 +3,6 @@
 typedef struct node
 {
 	int				val;
-	int				empty;
 	struct node		*next;
 
 }node_t;
@@ -11,10 +10,11 @@ typedef struct node
 
 
 node_t	*fill_list(int size, int *val_array);
-node_t	*fill_empty_list(int size);
-node_t	*append_last(node_t **head, int value);
-node_t	*delete_node(node_t **head, int idx);
-node_t	*append_begg(node_t **head, int value);
-node_t	*push(node_t **from, node_t **to);
 void	print_list(node_t *head);
-void	swap(node_t *head);
+void	sa(node_t *stack_a);
+void	sb(node_t *stack_b);
+void	ra(node_t *stack_a);
+void	rb(node_t *stack_b);
+void	ss(node_t *stack_a, node_t *stack_b);
+void	pa(node_t *stack_a, node_t *stack_b);
+void	pb(node_t *stack_b, node_t *stack_a);
