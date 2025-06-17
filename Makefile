@@ -1,29 +1,47 @@
-CC=			cc
+CC=				cc
 
-CFLAGS=		-Wall -Werror -Wextra -g3 -I./inc -I$(LIBDIR)/inc 
+CFLAGS=			 -g3 -I./inc -I$(LIBDIR)/inc 
 
-FILENAME=	list_utils main
-OP_FILES=	push swap rotate reverse_rotate
+FILENAME=		main
+OP_FILES=		push swap rotate reverse_rotate
+SORT_FILES=		sort_utils quicksort radixsort small_sort radix_sort_utils chunksort
+STACK_FILES=	stack_utils
+PARSE_FILES=	parse parse_utils
 
-SOURCEDIR = src/
-OPDIR = $(SOURCEDIR)operations/
-INCDIR = inc/
-OBJDIR = obj/
-OPOBJDIR = $(OBJDIR)operations/
-LIBDIR = libft/
-TESTDIR = test/
-LIBNAME = libft
+SOURCEDIR = 	src/
+OPDIR = 		$(SOURCEDIR)operations/
+SORTDIR = 		$(SOURCEDIR)sort/
+STACKDIR = 		$(SOURCEDIR)stack/
+PARSEDIR = 		$(SOURCEDIR)parse/
+OPOBJDIR = 		$(OBJDIR)operations/
+SORTOBJDIR = 	$(OBJDIR)sort/
+STACKOBJDIR = 	$(OBJDIR)stack/
+PARSEOBJDIR = 	$(OBJDIR)parse/
+INCDIR = 		inc/
+OBJDIR = 		obj/
+LIBDIR = 		libft/
+TESTDIR = 		test/
+LIBNAME = 		libft
 
-# Source and Object files
-SOURCE = 	$(addprefix $(SOURCEDIR), $(addsuffix .c, $(FILENAME))) \
-			$(addprefix $(OPDIR), $(addsuffix .c, $(OP_FILES)))
+SOURCE = 		$(addprefix $(SOURCEDIR), $(addsuffix .c, $(FILENAME))) \
+				$(addprefix $(OPDIR), $(addsuffix .c, $(OP_FILES))) \
+				$(addprefix $(SORTDIR), $(addsuffix .c, $(SORT_FILES))) \
+				$(addprefix $(STACKDIR), $(addsuffix .c, $(STACK_FILES))) \
+				$(addprefix $(PARSEDIR), $(addsuffix .c, $(PARSE_FILES)))
 
-OBJECTS	=	$(addprefix $(OBJDIR), $(addsuffix .o, $(FILENAME))) \
-			$(addprefix $(OPOBJDIR), $(addsuffix .o, $(OP_FILES)))
+			
 
-NAME = push_swap
+OBJECTS	=		$(addprefix $(OBJDIR), $(addsuffix .o, $(FILENAME))) \
+				$(addprefix $(OPOBJDIR), $(addsuffix .o, $(OP_FILES))) \
+				$(addprefix $(SORTOBJDIR), $(addsuffix .o, $(SORT_FILES))) \
+				$(addprefix $(STACKOBJDIR), $(addsuffix .o, $(STACK_FILES))) \
+				$(addprefix $(PARSEOBJDIR), $(addsuffix .o, $(PARSE_FILES)))
 
-all: $(OBJDIR) $(OPOBJDIR) $(NAME)
+
+NAME = 			push_swap
+
+
+all: $(OBJDIR) $(OPOBJDIR) $(SORTOBJDIR) $(STACKOBJDIR) $(PARSEOBJDIR) $(NAME)
 
 test: all
 	mkdir -p $(TESTDIR)
@@ -34,6 +52,15 @@ $(OBJDIR):
 
 $(OPOBJDIR):
 	mkdir -p $(OPOBJDIR)
+
+$(SORTOBJDIR):
+	mkdir -p $(SORTOBJDIR)
+
+$(STACKOBJDIR):
+	mkdir -p $(STACKOBJDIR)
+
+$(PARSEOBJDIR):
+	mkdir -p $(PARSEOBJDIR)
 
 $(LIBDIR)$(LIBNAME).a:
 	cd $(LIBDIR) && make
@@ -47,13 +74,22 @@ $(OBJDIR)%.o: $(SOURCEDIR)%.c
 $(OPOBJDIR)%.o: $(OPDIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(SORTOBJDIR)%.o: $(SORTDIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(STACKOBJDIR)%.o: $(STACKDIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(PARSEOBJDIR)%.o: $(PARSEDIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
 	rm -rf $(OBJDIR) $(TESTDIR)
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(TESTDIR)$(NAME)
-	cd $(LIBDIR) && make clean
+	cd $(LIBDIR) && make fclean
 
 re: fclean all
 	cd $(LIBDIR) && make re
