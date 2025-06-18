@@ -6,11 +6,10 @@
 /*   By: mmacedo- <mmacedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:06:25 by mmacedo-          #+#    #+#             */
-/*   Updated: 2025/06/17 01:17:24 by mmacedo-         ###   ########.fr       */
+/*   Updated: 2025/06/18 07:42:15 by mmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft.h"
 #include <unistd.h>
 #include "push_swap.h"
@@ -51,6 +50,26 @@ int	allocate(char **arg_split, int **result, int k)
 		k++;
 	}
 	return (k);
+}
+
+int	has_dupes(int *array, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < len)
+	{
+		j = 0;
+		while (j < len)
+		{
+			if (i != j && array[i] == array[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int	*parse(char **argv)

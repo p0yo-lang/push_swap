@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "push_swap.h"
+#include "ft_printf.h"
 #include <unistd.h>
 
-static node_t	*push(node_t **from, node_t **to)
+static t_node	*push(t_node **from, t_node **to)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	if (*from == NULL)
 		return (NULL);
@@ -27,13 +27,13 @@ static node_t	*push(node_t **from, node_t **to)
 	return ((*from));
 }
 
-void	pa(node_t **stack_a, node_t **stack_b)
+void	pa(t_node **stack_a, t_node **stack_b)
 {
 	push(stack_b, stack_a);
 	ft_printf("pa\n");
 }
 
-void	pb(node_t **stack_b, node_t **stack_a)
+void	pb(t_node **stack_b, t_node **stack_a)
 {
 	push(stack_a, stack_b);
 	ft_printf("pb\n");

@@ -14,10 +14,10 @@
 #include "push_swap.h"
 #include <unistd.h>
 
-static node_t	*rotate(node_t **head, int k)
+static t_node	*rotate(t_node **head, int k)
 {
 	int		i;
-	node_t	*current;
+	t_node	*current;
 
 	if (head == NULL || k == 0)
 		return (*head);
@@ -36,19 +36,19 @@ static node_t	*rotate(node_t **head, int k)
 	return (*head);
 }
 
-void	ra(node_t **stack_a)
+void	ra(t_node **stack_a)
 {
 	rotate(stack_a, 1);
 	ft_printf("ra\n");
 }
 
-void	rb(node_t **stack_b)
+void	rb(t_node **stack_b)
 {
 	rotate(stack_b, 1);
 	ft_printf("rb\n");
 }
 
-void	rr(node_t **stack_a, node_t **stack_b)
+void	rr(t_node **stack_a, t_node **stack_b)
 {
 	rotate(stack_a, 1);
 	rotate(stack_b, 1);

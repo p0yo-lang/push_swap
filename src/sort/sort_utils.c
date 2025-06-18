@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	is_sorted(node_t *stack)
+int	is_sorted(t_node *stack)
 {
 	while (stack->next)
 	{
@@ -23,10 +23,10 @@ int	is_sorted(node_t *stack)
 	return (1);
 }
 
-int	get_min_index(node_t *stack, int *min)
+int	get_min_index(t_node *stack, int *min)
 {
 	int		pos;
-	node_t	*head;
+	t_node	*head;
 
 	pos = 0;
 	head = stack;
@@ -46,10 +46,10 @@ int	get_min_index(node_t *stack, int *min)
 	return (pos);
 }
 
-int	get_max_index(node_t *stack, int *max)
+int	get_max_index(t_node *stack, int *max)
 {
 	int		pos;
-	node_t	*head;
+	t_node	*head;
 
 	pos = 0;
 	head = stack;
@@ -69,7 +69,7 @@ int	get_max_index(node_t *stack, int *max)
 	return (pos);
 }
 
-void	push_all_to_a(node_t **stack_b_head, node_t **stack_a_head)
+void	push_all_to_a(t_node **stack_b_head, t_node **stack_a_head)
 {
 	while (*stack_b_head)
 		pa(stack_a_head, stack_b_head);

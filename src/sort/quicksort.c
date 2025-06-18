@@ -68,7 +68,7 @@ void	quicksort_array(int arr[], int low, int high)
 **then sorts the array using quicksort.
 **Returns the middle element (or the lower middle for even n).
 **Returns 0 if conversion fails.*/
-int	get_median(node_t *stack, int n)
+int	get_median(t_node *stack, int n)
 {
 	int	*array;
 	int	median;

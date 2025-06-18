@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "push_swap.h"
 
-static node_t	*swap(node_t **head)
+static t_node	*swap(t_node **head)
 {
 	int	temp;
 
@@ -25,19 +25,19 @@ static node_t	*swap(node_t **head)
 	return (*head);
 }
 
-void	sa(node_t **stack_a)
+void	sa(t_node **stack_a)
 {
 	swap(stack_a);
 	ft_printf("sa\n");
 }
 
-void	sb(node_t **stack_b)
+void	sb(t_node **stack_b)
 {
 	swap(stack_b);
 	ft_printf("sb\n");
 }
 
-void	ss(node_t **stack_a, node_t **stack_b)
+void	ss(t_node **stack_a, t_node **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);

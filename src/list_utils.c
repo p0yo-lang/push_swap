@@ -14,22 +14,21 @@
 #include "libft.h"
 #include <stdlib.h>
 
-
-node_t	*fill_list(int size, int val_array[])
+t_node	*fill_list(int size, int val_array[])
 {
 	int		i;
-	node_t	*head;
-	node_t	*new_node;
-	node_t	*temp;
+	t_node	*head;
+	t_node	*new_node;
+	t_node	*temp;
 
 	i = 1;
-	head = (node_t *)malloc(sizeof(node_t));
+	head = (t_node *)malloc(sizeof(t_node));
 	head->val = val_array[0];
 	head->next = NULL;
 	temp = head;
 	while (i < size)
 	{
-		new_node = malloc(sizeof(node_t));
+		new_node = malloc(sizeof(t_node));
 		new_node->val = val_array[i];
 		new_node->next = NULL;
 		temp->next = new_node;
@@ -39,9 +38,9 @@ node_t	*fill_list(int size, int val_array[])
 	return (head);
 }
 
-void	print_list(node_t *head)
+void	print_list(t_node *head)
 {
-	node_t	*node;
+	t_node	*node;
 
 	node = head;
 	while (node)

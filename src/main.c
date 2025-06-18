@@ -16,17 +16,17 @@
 
 int	main(int argc, char **argv)
 {
-	node_t	*stack_a_head;
-	node_t	*stack_b_head;
+	t_node	*stack_a_head;
+	t_node	*stack_b_head;
 	int		*arg_array;
 	int		len;
 
 	(void)argc;
 	len = count_argv(argv);
 	arg_array = parse(argv);
-	if (!arg_array)
+	if (!arg_array || has_dupes(arg_array, len))
 	{
-		ft_printf("Error, please use integers with no dupesi\n");
+		ft_printf("Error, please use integers with no dupes\n");
 		return (0);
 	}
 	stack_b_head = NULL;

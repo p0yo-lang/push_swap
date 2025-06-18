@@ -13,10 +13,10 @@
 #include "ft_printf.h"
 #include "push_swap.h"
 
-static node_t	*reverse_rotate(node_t **head)
+static t_node	*reverse_rotate(t_node **head)
 {
-	node_t	*last;
-	node_t	*previous;
+	t_node	*last;
+	t_node	*previous;
 
 	if (head == NULL)
 		return (*head);
@@ -32,19 +32,19 @@ static node_t	*reverse_rotate(node_t **head)
 	return (*head);
 }
 
-void	rra(node_t **stack_a)
+void	rra(t_node **stack_a)
 {
 	reverse_rotate(stack_a);
 	ft_printf("rra\n");
 }
 
-void	rrb(node_t **stack_b)
+void	rrb(t_node **stack_b)
 {
 	reverse_rotate(stack_b);
 	ft_printf("rrb\n");
 }
 
-void	rrr(node_t **stack_a, node_t **stack_b)
+void	rrr(t_node **stack_a, t_node **stack_b)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);

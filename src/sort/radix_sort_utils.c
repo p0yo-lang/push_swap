@@ -25,7 +25,7 @@ int	get_max_bits(int size)
 
 /*Update min_val and max_val to reflect the minimum and maximum values
 **found in the given stack*/
-void	get_min_max(node_t *stack, int *min_val, int *max_val)
+void	get_min_max(t_node *stack, int *min_val, int *max_val)
 {
 	*min_val = stack->val;
 	*max_val = stack->val;
@@ -42,11 +42,11 @@ void	get_min_max(node_t *stack, int *min_val, int *max_val)
 /*Convert the stack to an int array, then
 **sorts it using quicksort.
 **normalize the stack: the value becomes the index*/
-void	normalize_stack(node_t *stack, int size)
+void	normalize_stack(t_node *stack, int size)
 {
 	int		*array;
 	int		i;
-	node_t	*current;
+	t_node	*current;
 
 	array = stack_get_array(stack);
 	quicksort_array(array, 0, size - 1);

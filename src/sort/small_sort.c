@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	three_number_sort(node_t **stack_a, int x, int y, int z)
+void	three_number_sort(t_node **stack_a, int x, int y, int z)
 {
 	if (is_sorted(*stack_a))
 		return ;
@@ -34,7 +34,7 @@ void	three_number_sort(node_t **stack_a, int x, int y, int z)
 	}
 }
 
-void	five_number_sort(node_t **stack_a, node_t **stack_b)
+void	five_number_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	min_index;
 	int	min;
@@ -62,7 +62,7 @@ void	five_number_sort(node_t **stack_a, node_t **stack_b)
 		sa(stack_a);
 }
 
-void	fourth_number_sort(node_t **stack_a, node_t **stack_b)
+void	fourth_number_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	min_index;
 	int	min;
@@ -81,7 +81,7 @@ void	fourth_number_sort(node_t **stack_a, node_t **stack_b)
 	pa(stack_a, stack_b);
 }
 
-void	small_sort(node_t **stack_a, node_t **stack_b, int len)
+void	small_sort(t_node **stack_a, t_node **stack_b, int len)
 {
 	if (len == 5)
 		five_number_sort(stack_a, stack_b);
