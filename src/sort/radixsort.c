@@ -16,7 +16,7 @@
 **Radix sort here uses binary representation of the numbers.
 **Because we have two stacks, 0 goes to stack_b, 1 stays in stack_a
 **It normalize the stack so values are in the range eg:
-**stack_a = [3, 8, 2, 9], noralized = [0, 1, 2, 3].
+**stack_a = [3, 8, 2, 9], normalized = [1, , 0, 3].
 **Determine the number of bits needed to represent 
 **the largest number size - 1 since it's normalized.
 **For each bit position:

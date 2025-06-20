@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	if (!arg_array || has_dupes(arg_array, len))
 	{
 		ft_printf("Error\n");
-		return (0);
+		return (free(arg_array), 0);
 	}
 	stack_b_head = NULL;
 	stack_a_head = fill_list(len, arg_array);
