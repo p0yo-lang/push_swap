@@ -63,7 +63,8 @@ int	has_dupes(int *array, int len)
 		j = 0;
 		while (j < len)
 		{
-			if (i != j && array[i] == array[j])
+			if (i != j && array[i] == array[j]
+				|| (unsigned int)array[i] > 2147483647)
 				return (1);
 			j++;
 		}

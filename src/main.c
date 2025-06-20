@@ -21,12 +21,16 @@ int	main(int argc, char **argv)
 	int		*arg_array;
 	int		len;
 
-	(void)argc;
 	len = count_argv(argv);
+	if (argc < 2 || len == 0)
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
 	arg_array = parse(argv);
 	if (!arg_array || has_dupes(arg_array, len))
 	{
-		ft_printf("Error, please use integers with no dupes\n");
+		ft_printf("Error\n");
 		return (0);
 	}
 	stack_b_head = NULL;

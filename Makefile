@@ -43,10 +43,6 @@ NAME = 			push_swap
 
 all: $(OBJDIR) $(OPOBJDIR) $(SORTOBJDIR) $(STACKOBJDIR) $(PARSEOBJDIR) $(NAME)
 
-test: all
-	mkdir -p $(TESTDIR)
-	mv $(NAME) $(TESTDIR)
-
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
@@ -84,14 +80,13 @@ $(PARSEOBJDIR)%.o: $(PARSEDIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJDIR) $(TESTDIR)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(TESTDIR)$(NAME)
 	cd $(LIBDIR) && make fclean
 
 re: fclean all
 	cd $(LIBDIR) && make re
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re
